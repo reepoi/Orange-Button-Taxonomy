@@ -26,6 +26,19 @@ export default (input, options, context) => {
     for (let [k, v] of Object.entries(primitiveValidators)) {
       v(input, taxonomy, m => addResult(m, k));
     }
+    if ('StartTime' in sampleValue || 'EndTime' in sampleValue) {
+      if ('StartTime' in sampleValue && 'EndTime' in sampleValue) {
+        let start_time = new Date(sampleValue['StartTime']);
+        let end_time = new Date(sampleValue['EndTime']);
+        if (end_time < start_time) {
+          addResult(`StartTime "${sampleValue['StartTime']}" cannot be greater than EndTime "${sampleValue['EndTime']}"`)
+        }
+      } else if ('StartTime' in sampleValue) {
+        addResult('Since a StartTime is defined, an EndTime must also be defined.')
+      } else {
+        addResult('Since an EndTime is defined, a StartTime must also be defined.')
+      }
+    }
   }
   return results;
 }
@@ -74,13 +87,40 @@ function OpenAPITypecheckNotArray(value, type) {
   }
 }
 
+function validateDateOrDateTime(string, isDate, addResult) {
+  try {
+    let timestamp = new Date(string);
+    let asISO = timestamp.toISOString();
+    if (isDate) {
+      asISO = asISO.split('T')[0];
+    }
+    if (string !== asISO) {
+      addResult(`Please replace "${string}" with "${asISO}"`)
+    }
+  } catch (error) {
+    addResult(`The ${isDate ? 'date' : 'timestamp'} "${string}" could not be parsed: ${error}`)
+  }
+}
+
 function validateDecimals(input, taxonomy, addResult) {}
 
-function validateEndTime(input, taxonomy, addResult) {}
+function validateEndTime(input, taxonomy, addResult) {
+  let primitive = 'EndTime';
+  let sampleValue = getSampleValue(input);
+  if (primitive in sampleValue) {
+    validateDateOrDateTime(sampleValue[primitive], false, addResult);
+  }
+}
 
 function validatePrecision(input, taxonomy, addResult) {}
 
-function validateStartTime(input, taxonomy, addResult) {}
+function validateStartTime(input, taxonomy, addResult) {
+  let primitive = 'StartTime';
+  let sampleValue = getSampleValue(input);
+  if (primitive in sampleValue) {
+    validateDateOrDateTime(sampleValue[primitive], false, addResult);
+  }
+}
 
 function validateUnit(input, taxonomy, addResult) {
   let primitive = 'Unit';
@@ -135,6 +175,8 @@ function validateValue(input, taxonomy, addResult) {
       }
     } else if (OpenAPIType.type === 'string' && sampleValueValue.length === 0) {
       addResult(`Must not be an empty string.`);
+    } else if (itemType === 'DateItemType' || itemType === 'DateTimeItemType') {
+      validateDateOrDateTime(sampleValue[primitive], itemType === 'DateItemType', addResult);
     } else if (itemTypeEnums && !validatorOptions.enumItemTypeIgnoreList.includes(itemType)) {
       let itemTypeGroup = getItemTypeGroup(input);
       let itemTypeGroupDef = taxonomy['x-ob-item-type-groups'][itemTypeGroup];
