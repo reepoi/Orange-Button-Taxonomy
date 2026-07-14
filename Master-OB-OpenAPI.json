@@ -108,6 +108,9 @@
           },
           "Manufacturer": {
             "$ref": "#/components/schemas/Manufacturer"
+          },
+          "HardwareBOMs": {
+            "$ref": "#/components/schemas/HardwareBOMs"
           }
         },
         "type": "object",
@@ -181,6 +184,9 @@
           },
           "AlternativeIdentifiers": {
             "$ref": "#/components/schemas/AlternativeIdentifiers"
+          },
+          "HardwareBOMID": {
+            "$ref": "#/components/schemas/HardwareBOMID"
           }
         },
         "type": "object"
@@ -16576,6 +16582,75 @@
             "x-ob-sample-value": {}
           }
         ]
+      },
+      "HardwareBOM": {
+        "type": "object",
+        "description": "A bill of materials for the physical components of a product.",
+        "properties": {
+          "ProdCode": {
+            "$ref": "#/components/schemas/ProdCode"
+          },
+          "FileFolderURL": {
+            "$ref": "#/components/schemas/FileFolderURL"
+          },
+          "HardwareBOMID": {
+            "$ref": "#/components/schemas/HardwareBOMID"
+          },
+          "HardwareBOMVersion": {
+            "$ref": "#/components/schemas/HardwareBOMVersion"
+          },
+          "MaterialDisclosureChecklist": {
+            "$ref": "#/components/schemas/MaterialDisclosureChecklist"
+          }
+        }
+      },
+      "HardwareBOMID": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TaxonomyElementString"
+          },
+          {
+            "type": "object",
+            "description": "An identifier for a hardware BOM",
+            "x-ob-item-type": "IdentifierTypeItemType",
+            "x-ob-item-type-group": "",
+            "x-ob-usage-tips": "",
+            "x-ob-sample-value": {}
+          }
+        ]
+      },
+      "HardwareBOMVersion": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TaxonomyElementString"
+          },
+          {
+            "type": "object",
+            "description": "An identifier for a variation of a hardware BOM",
+            "x-ob-item-type": "StringItemType",
+            "x-ob-item-type-group": "",
+            "x-ob-usage-tips": "",
+            "x-ob-sample-value": {}
+          }
+        ]
+      },
+      "MaterialDisclosureChecklist": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Checklist"
+          },
+          {
+            "type": "object",
+            "description": "A checklist that discloses chemical components in a product's bill of materials (BOM).",
+            "properties": {}
+          }
+        ]
+      },
+      "HardwareBOMs": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/HardwareBOM"
+        }
       }
     }
   },
@@ -17966,14 +18041,14 @@
       "description": "Module type in terms of its intended use, style or features. Use CellTechnologyTypeItemType to specify the cell type.",
       "enums": {
         "Other": {
-          "label": "",
+          "label": "Other",
           "description": ""
         },
         "SiliconWafer": {
           "label": "Silicon wafer",
           "description": ""
         },
-        "Thinfilm": {
+        "ThinFilm": {
           "label": "Thin film",
           "description": ""
         },
@@ -24714,7 +24789,7 @@
           "label": "Zero Busbar",
           "description": ""
         },
-        "Smartwire": {
+        "SmartWire": {
           "label": "SmartWire Contacting Technology",
           "description": ""
         },
