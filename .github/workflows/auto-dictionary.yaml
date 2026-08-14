@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: '24'
       - name: Install IBM OpenAPI Validator with Its Spectral OpenAPI Ruleset
-        run: npm install -g ibm-openapi-validator@1.37.8 && npm install @ibm-cloud/openapi-ruleset@1.33.5
+        run: npm install -g ibm-openapi-validator@1.37.8 && npm --no-save --package-lock=false install @ibm-cloud/openapi-ruleset@1.33.5
       - name: Install Typo.js Spellchecker
         run: npm install typo-js@1.3.1
       - name: Run validator
@@ -62,6 +62,7 @@ jobs:
             Use "<substring>//<definition>" only for abbreviations with an obvious expansion; otherwise use "<substring>".
             Preserve case-insensitive alphabetical order.
             Do not inspect other files, research, run tests, or explain.
+            Act immediately; do not ask for confirmation. You must edit with the necessary changes before the file before responding.
 
             ${{ steps.validator.outputs.output }}
 
