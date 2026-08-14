@@ -2,7 +2,7 @@ name: Scheduled OpenCode Task
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '2/5 * * * *'
       timezone: 'America/Denver'
   workflow_dispatch:
 
@@ -10,7 +10,6 @@ jobs:
   opencode:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write
       contents: write
       pull-requests: write
       issues: write
@@ -18,7 +17,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
         with:
-          persist-credentials: false
+          persist-credentials: true
       - name: Setup
         uses: actions/setup-node@v6
         with:
@@ -47,8 +46,11 @@ jobs:
           exit "$status"
       - name: Run OpenCode
         uses: anomalyco/opencode/github@latest
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           model: opencode/big-pickle
+          use_github_token: true
           prompt: |
             From the following pairs of substrings and full phrases,
             add the substrings to .github/configs/schema-validator/OB-dictionaries/OB-words/OB-words.dic
