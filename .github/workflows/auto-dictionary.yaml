@@ -39,7 +39,7 @@ jobs:
           set +e
           lint-openapi Master-OB-OpenAPI.json \
             -r ./.github/configs/schema-validator/.spectral.yaml 2>&1 |
-            sed -n '/These substrings are not in the dictionary:/{s/.*: //;h;n;n;s/.*: [^A-Z]*//;H;g;s/\n/: /;p;}' |
+            sed -n '/These substrings are not in the dictionary:/{s/.*: //;p;}' |
             tee -a "$GITHUB_OUTPUT"
           status=${PIPESTATUS[0]}
           set -e
@@ -56,12 +56,11 @@ jobs:
           model: opencode/big-pickle
           use_github_token: true
           prompt: |
-            Here are lines of "<substring>: <source>" where <substring> might be misspelled.
+            Here are substrings which might be misspelled:
 
             ${{ steps.validator.outputs.output }}
 
-            Add <substring> to .github/configs/schema-validator/OB-dictionaries/OB-words/OB-words.dic if it is correctly spelled in American English.
-            The <source> provides context for <substring>, but only <substring> should be added.
+            Add the substrings to .github/configs/schema-validator/OB-dictionaries/OB-words/OB-words.dic if they are correctly spelled in American English.
             Use "<substring>//<definition>" only for abbreviations.
             Preserve case-insensitive alphabetical order.
             Do not inspect other files, research, run tests, or explain.
