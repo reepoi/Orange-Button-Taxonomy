@@ -43,6 +43,8 @@ BM//Bermuda
 BN//Brunei Darussalam
 BN//Phase B to Neutral
 BO//Bolivia (Plurinational State of)
+BOM//Bill of Materials
+BOMID//Bill of Materials Identifier
 BQ//Bonaire, Sint Eustatius and Saba
 BR//Brazil
 BS//Bahamas
@@ -53,6 +55,7 @@ BY//Belarus
 BZ//Belize
 Backsheet
 Bifacial
+Bifaciality
 Bluetooth
 Bool//Boolean
 Boreal
@@ -316,6 +319,7 @@ Qual//Qualification
 Quals//Qualifications
 RE//Réunion
 REbusDCNanogrid
+Recertification
 RO//Romania
 RS//Serbia
 RU//Russian Federation
@@ -403,9 +407,11 @@ WS//Samoa
 Warr//Warranty
 Workmans
 Wtd//Weighted
+Wye
 YE//Yemen
 YT//Mayotte
 ZA//South Africa
+ZBB//Zero-Busbar
 ZM//Zambia
 ZW//Zimbabwe
 Zigbee
