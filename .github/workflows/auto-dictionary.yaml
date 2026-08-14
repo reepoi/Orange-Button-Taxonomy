@@ -19,9 +19,42 @@ jobs:
         uses: actions/checkout@v6
         with:
           persist-credentials: false
+      - name: Setup
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Install IBM OpenAPI Validator with Its Spectral OpenAPI Ruleset
+        run: npm install -g ibm-openapi-validator@1.37.8 && npm install @ibm-cloud/openapi-ruleset@1.33.5
+      - name: Install Typo.js Spellchecker
+        run: npm install typo-js@1.3.1
+      - name: Run validator
+        id: validator
+        continue-on-error: true
+        run: |
+          delimiter="validator-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          echo "output<<$delimiter" >> "$GITHUB_OUTPUT"
 
+          set +e
+          lint-openapi Master-OB-OpenAPI.json \
+            -r ./.github/configs/schema-validator/.spectral.yaml 2>&1 |
+            sed -n '/These substrings are not in the dictionary:/{s/.*: //;h;n;n;s/.*: [^A-Z]*//;H;g;s/\n/: /;p;}' |
+            tee -a "$GITHUB_OUTPUT"
+          status=${PIPESTATUS[0]}
+          set -e
+
+          echo "$delimiter" >> "$GITHUB_OUTPUT"
+          echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          exit "$status"
       - name: Run OpenCode
         uses: anomalyco/opencode/github@latest
         with:
+          model: opencode/big-pickle
           prompt: |
-            Please check Master-OB-OpenAPI.json for any misspelled words.
+            From the following pairs of substrings and full phrases,
+            add the substrings to .github/configs/schema-validator/OB-dictionaries/OB-words/OB-words.dic
+            if they are real terms in the solar industry:
+            ${{ steps.validator.outputs.output }}
+
+      - name: Show file changes
+        if: ${{ always() }}
+        run: git diff
