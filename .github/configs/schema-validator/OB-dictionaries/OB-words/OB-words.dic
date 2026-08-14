@@ -53,6 +53,7 @@ BY//Belarus
 BZ//Belize
 Backsheet
 Bifacial
+Bifaciality
 Bluetooth
 Bool//Boolean
 Boreal
@@ -152,6 +153,10 @@ GY//Guyana
 Gauge
 Geocoding
 Groundskeeping
+HardwareBOM//Hardware Bill of Materials
+HardwareBOMID//Hardware Bill of Materials Identifier
+HardwareBOMs//Hardware Bills of Materials
+HardwareBOMVersion//Hardware Bill of Materials Version
 HJT//Heterojunction Technology
 HK//Hong Kong
 HM//Heard Island and McDonald Islands
@@ -316,6 +321,7 @@ Qual//Qualification
 Quals//Qualifications
 RE//Réunion
 REbusDCNanogrid
+Recertification
 RO//Romania
 RS//Serbia
 RU//Russian Federation
@@ -403,9 +409,11 @@ WS//Samoa
 Warr//Warranty
 Workmans
 Wtd//Weighted
+Wye
 YE//Yemen
 YT//Mayotte
 ZA//South Africa
+ZBB//Zero Busbar
 ZM//Zambia
 ZW//Zimbabwe
 Zigbee
