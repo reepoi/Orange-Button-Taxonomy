@@ -26,9 +26,9 @@ jobs:
         with:
           node-version: '24'
       - name: Install IBM OpenAPI Validator with Its Spectral OpenAPI Ruleset
-        run: npm install -g ibm-openapi-validator@1.37.8 && npm --no-save --package-lock=false install @ibm-cloud/openapi-ruleset@1.33.5
+        run: npm install -g ibm-openapi-validator@1.37.8 && npm install @ibm-cloud/openapi-ruleset@1.33.5
       - name: Install Typo.js Spellchecker
-        run: npm install --no-save --package-lock=false typo-js@1.3.1
+        run: npm install typo-js@1.3.1
       - name: Run validator
         id: validator
         continue-on-error: true
@@ -46,6 +46,7 @@ jobs:
 
           echo "$delimiter" >> "$GITHUB_OUTPUT"
           echo "exit_code=$status" >> "$GITHUB_OUTPUT"
+          git clean -dfx -- node_modules package.json package-lock.json
           exit "$status"
       - name: Run OpenCode
         uses: anomalyco/opencode/github@latest
