@@ -1,0 +1,26 @@
+name: Scheduled OpenCode Task
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+      timezone: 'America/Denver'
+
+jobs:
+  opencode:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Run OpenCode
+        uses: anomalyco/opencode/github@latest
+        with:
+          prompt: |
+            Please check Master-OB-OpenAPI.json for any misspelled words.
