@@ -53,7 +53,11 @@ BY//Belarus
 BZ//Belize
 Backsheet
 Bifacial
+Bifaciality
 Bluetooth
+BOM//Bill of Materials
+BOMID//Bill of Materials Identifier
+BOMs//Bills of Materials
 Bool//Boolean
 Boreal
 Busbar
@@ -316,6 +320,7 @@ Qual//Qualification
 Quals//Qualifications
 RE//Réunion
 REbusDCNanogrid
+Recertification
 RO//Romania
 RS//Serbia
 RU//Russian Federation
@@ -403,9 +408,11 @@ WS//Samoa
 Warr//Warranty
 Workmans
 Wtd//Weighted
+Wye
 YE//Yemen
 YT//Mayotte
 ZA//South Africa
+ZBB
 ZM//Zambia
 ZW//Zimbabwe
 Zigbee
