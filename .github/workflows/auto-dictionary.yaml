@@ -55,7 +55,7 @@ jobs:
           model: opencode/big-pickle
           use_github_token: true
           prompt: |
-            Here are lines is "<substring>: <context>" where <substring> might be misspelled.
+            Here are lines of "<substring>: <context>" where <substring> might be misspelled.
 
             ${{ steps.validator.outputs.output }}
 
