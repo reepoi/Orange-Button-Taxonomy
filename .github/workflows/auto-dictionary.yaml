@@ -18,6 +18,10 @@ jobs:
         uses: actions/checkout@v6
         with:
           persist-credentials: true
+      - name: Configure Git identity
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
       - name: Setup
         uses: actions/setup-node@v6
         with:
@@ -52,9 +56,13 @@ jobs:
           model: opencode/big-pickle
           use_github_token: true
           prompt: |
-            From the following pairs of substrings and full phrases,
-            add the substrings to .github/configs/schema-validator/OB-dictionaries/OB-words/OB-words.dic
-            if they are real terms in the solar industry:
+            Edit only .github/configs/schema-validator/OB-dictionaries/OB-words/OB-words.dic.
+            Each input line is "<substring>: <context>".
+            Using only the context, add the substring if it is correctly spelled.
+            Use "<substring>//<definition>" only for abbreviations with an obvious expansion; otherwise use "<substring>".
+            Preserve case-insensitive alphabetical order.
+            Do not inspect other files, research, run tests, or explain.
+
             ${{ steps.validator.outputs.output }}
 
       - name: Show file changes
