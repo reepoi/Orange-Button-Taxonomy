@@ -61,7 +61,8 @@ jobs:
             ${{ steps.validator.outputs.output }}
 
             Add the substring to .github/configs/schema-validator/OB-dictionaries/OB-words/OB-words.dic if it is correctly spelled in American English.
-            Use "<substring>//<definition>" only for abbreviations.
+            Do not add plural abbreviations.
+            Use "<substring>//<definition>" only for singular abbreviations.
             Preserve case-insensitive alphabetical order.
             Do not inspect other files, research, run tests, or explain.
             Act immediately; do not ask for confirmation. You must edit with the necessary changes before the file before responding.
