@@ -56,11 +56,12 @@ jobs:
           model: opencode/big-pickle
           use_github_token: true
           prompt: |
-            Here are lines of "<substring>: <context>" where <substring> might be misspelled.
+            Here are lines of "<substring>: <source>" where <substring> might be misspelled.
 
             ${{ steps.validator.outputs.output }}
 
-            Add the substring to .github/configs/schema-validator/OB-dictionaries/OB-words/OB-words.dic if it is correctly spelled in American English.
+            Add <substring> to .github/configs/schema-validator/OB-dictionaries/OB-words/OB-words.dic if it is correctly spelled in American English.
+            The <source> provides context for <substring>, but only <substring> should be added.
             Use "<substring>//<definition>" only for abbreviations.
             Preserve case-insensitive alphabetical order.
             Do not inspect other files, research, run tests, or explain.
