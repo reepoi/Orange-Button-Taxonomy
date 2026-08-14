@@ -55,12 +55,11 @@ jobs:
           model: opencode/big-pickle
           use_github_token: true
           prompt: |
-            Edit only .github/configs/schema-validator/OB-dictionaries/OB-words/OB-words.dic.
-            Each input line is "<substring>: <context>".
+            Here are lines is "<substring>: <context>" where <substring> might be misspelled.
 
             ${{ steps.validator.outputs.output }}
 
-            Add the substring if it is correctly spelled in American English.
+            Add the substring to .github/configs/schema-validator/OB-dictionaries/OB-words/OB-words.dic if it is correctly spelled in American English.
             Use "<substring>//<definition>" only for abbreviations.
             Preserve case-insensitive alphabetical order.
             Do not inspect other files, research, run tests, or explain.
