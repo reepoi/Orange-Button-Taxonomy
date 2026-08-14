@@ -60,7 +60,7 @@ jobs:
 
             ${{ steps.validator.outputs.output }}
 
-            Add <substring> to .github/configs/schema-validator/OB-dictionaries/OB-words/OB-words.dic if it is correctly spelled in American English.
+            Add <substring> to .github/configs/schema-validator/OB-dictionaries/OB-words/OB-words.dic if it is correctly spelled in American English for the photovoltaics industry.
             Use "<substring>//<definition>" only for abbreviations.
             Context for determining spelling and <definition> is provided by <source>.
             Only the exact text of <substring> should be added for <substring>; no additional text from <source>.
