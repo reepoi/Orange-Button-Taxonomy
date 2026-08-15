@@ -53,6 +53,7 @@ BY//Belarus
 BZ//Belize
 Backsheet
 Bifacial
+Bifaciality
 Bluetooth
 Bool//Boolean
 Boreal
@@ -161,6 +162,10 @@ HOAID//Homeowners Association Identifier
 HR//Croatia
 HT//Haiti
 HU//Hungary
+HardwareBOM
+HardwareBOMID
+HardwareBOMVersion
+HardwareBOMs
 Hemiboreal
 Heterojunction
 Horiz//Horizontal
@@ -320,6 +325,7 @@ RO//Romania
 RS//Serbia
 RU//Russian Federation
 RW//Rwanda
+Recertification
 Reqrmnts//Requirements
 Rpt//Reporting
 Rtg//Rating
@@ -403,9 +409,11 @@ WS//Samoa
 Warr//Warranty
 Workmans
 Wtd//Weighted
+Wye
 YE//Yemen
 YT//Mayotte
 ZA//South Africa
+ZBB//Zero Busbar
 ZM//Zambia
 ZW//Zimbabwe
 Zigbee
