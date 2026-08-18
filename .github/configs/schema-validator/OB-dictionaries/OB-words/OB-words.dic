@@ -59,6 +59,9 @@ BOM//Bill of Materials
 BOMID//Bill of Materials Identifier
 BOMVersion//Bill of Materials Version
 Bool//Boolean
+BOM//Bill of Materials
+BOMID//Bill of Materials Identifier
+BOMs
 Boreal
 Busbar
 CA//Canada
@@ -327,6 +330,7 @@ RW//Rwanda
 Recertification
 Reqrmnts//Requirements
 Rpt//Reporting
+Recertification
 Rtg//Rating
 SA//Saudi Arabia
 SAE//Society of Automotive Engineers
@@ -414,5 +418,6 @@ YT//Mayotte
 ZA//South Africa
 ZBB//Zero BusBar
 ZM//Zambia
+ZBB//Zero BusBar
 ZW//Zimbabwe
 Zigbee
