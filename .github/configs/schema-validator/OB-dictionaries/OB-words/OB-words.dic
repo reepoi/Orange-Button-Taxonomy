@@ -53,8 +53,15 @@ BY//Belarus
 BZ//Belize
 Backsheet
 Bifacial
+Bifaciality
 Bluetooth
+BOM//Bill of Materials
+BOMID//Bill of Materials Identifier
+BOMVersion//Bill of Materials Version
 Bool//Boolean
+BOM//Bill of Materials
+BOMID//Bill of Materials Identifier
+BOMs
 Boreal
 Busbar
 CA//Canada
@@ -320,8 +327,10 @@ RO//Romania
 RS//Serbia
 RU//Russian Federation
 RW//Rwanda
+Recertification
 Reqrmnts//Requirements
 Rpt//Reporting
+Recertification
 Rtg//Rating
 SA//Saudi Arabia
 SAE//Society of Automotive Engineers
@@ -403,9 +412,12 @@ WS//Samoa
 Warr//Warranty
 Workmans
 Wtd//Weighted
+Wye
 YE//Yemen
 YT//Mayotte
 ZA//South Africa
+ZBB//Zero BusBar
 ZM//Zambia
+ZBB//Zero BusBar
 ZW//Zimbabwe
 Zigbee
