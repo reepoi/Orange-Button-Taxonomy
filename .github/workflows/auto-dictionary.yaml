@@ -53,7 +53,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          model: opencode/big-pickle
+          model: opencode/deepseek-v4-flash-free
           use_github_token: true
           prompt: |
             Here are lines of "<substring>: <source>" where <substring> might be misspelled.
