@@ -26,12 +26,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if ! gh label view "$PR_LABEL" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
-            gh label create "$PR_LABEL" \
-              --repo "$GITHUB_REPOSITORY" \
-              --color '0E8A16' \
-              --description 'Created by the expand-spell-checker-dictionary workflow'
-          fi
+          gh label create "$PR_LABEL" \
+            --repo "$GITHUB_REPOSITORY" \
+            --color '0E8A16' \
+            --description 'Created by the expand-spell-checker-dictionary workflow' \
+            --force
       - name: Check for an open pull request
         id: check
         env:
