@@ -97,7 +97,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          model: opencode/muse-spark-1.2
+          model: opencode/muse-spark-1.2-contributor-free
           use_github_token: true
           prompt: |
             Here are lines of "<substring>: <source>" where <substring> might be misspelled.
