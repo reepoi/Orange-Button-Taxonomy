@@ -1,16 +1,65 @@
-name: Scheduled OpenCode Task
+name: Expand spell checker dictionary
 
 on:
   schedule:
-    - cron: '23 2 * * *'
+    - cron: '23 0 * * *'
       timezone: 'America/Denver'
   workflow_dispatch:
 
+env:
+  PR_LABEL: 'Slow loop: expand-spell-checker-dictionary'
+
+concurrency:
+  group: expand-spell-checker-dictionary
+  cancel-in-progress: false
+
 jobs:
-  opencode:
+  should_run_loop:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: read
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
+    steps:
+      - name: Ensure workflow label exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh label view "$PR_LABEL" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh label create "$PR_LABEL" \
+              --repo "$GITHUB_REPOSITORY" \
+              --color '0E8A16' \
+              --description 'Created by the expand-spell-checker-dictionary workflow'
+          fi
+      - name: Check for an open pull request
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          count="$(
+            gh pr list \
+              --repo "$GITHUB_REPOSITORY" \
+              --state open \
+              --label "$PR_LABEL" \
+              --json number \
+              --jq 'length'
+          )"
+
+          if (( count > 0 )); then
+            echo 'should_run=false' >> "$GITHUB_OUTPUT"
+            echo 'An open spell checker dictionary pull request already exists.'
+          else
+            echo 'should_run=true' >> "$GITHUB_OUTPUT"
+          fi
+
+  loop:
+    needs: should_run_loop
+    if: needs.should_run_loop.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      issues: write
       pull-requests: write
     steps:
       - name: Checkout repository
@@ -30,7 +79,7 @@ jobs:
         continue-on-error: true
         run: |
           delimiter="validator-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
-          echo "output<<$delimiter" >> "$GITHUB_OUTPUT"
+          echo "misspelled_substrings<<$delimiter" >> "$GITHUB_OUTPUT"
 
           set +e
           lint-openapi Master-OB-OpenAPI.json \
@@ -43,7 +92,8 @@ jobs:
           echo "$delimiter" >> "$GITHUB_OUTPUT"
           git clean -dfx -- node_modules package.json package-lock.json
           exit "$status"
-      - name: Run OpenCode
+      - name: Run agent to update dictionary and create a pull request
+        if: steps.validator.outputs.misspelled_substrings != ''
         uses: anomalyco/opencode/github@v1.18.18
         env:
           GITHUB_TOKEN: ${{ github.token }}
@@ -53,7 +103,7 @@ jobs:
           prompt: |
             Here are lines of "<substring>: <source>" where <substring> might be misspelled.
 
-            ${{ steps.validator.outputs.output }}
+            ${{ steps.validator.outputs.misspelled_substrings }}
 
             Add <substring> to .github/configs/schema-validator/OB-dictionaries/OB-words/OB-words.dic if it is correctly spelled in American English for the photovoltaics industry.
             Use "<substring>//<definition>" only for abbreviations.
@@ -63,3 +113,25 @@ jobs:
             Do not inspect other files, research, run tests, or explain.
             Act immediately; do not ask for confirmation. You must edit with the necessary changes before the file before responding.
             Title the pull request "Adding words to spell checker dictionary."
+      - name: Label created pull request
+        if: steps.validator.outputs.misspelled_substrings != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          branch="$(git branch --show-current)"
+          pr_number="$(
+            gh pr list \
+              --repo "$GITHUB_REPOSITORY" \
+              --state open \
+              --head "$branch" \
+              --json number \
+              --jq '.[0].number // empty'
+          )"
+
+          if [[ -n "$pr_number" ]]; then
+            gh pr edit "$pr_number" \
+              --repo "$GITHUB_REPOSITORY" \
+              --add-label "$PR_LABEL"
+          else
+            echo 'The agent did not create a pull request.'
+          fi
