@@ -6798,6 +6798,9 @@
               },
               "CellTechnologyType": {
                 "$ref": "#/components/schemas/CellTechnologyType"
+              },
+              "CellConfigurationType": {
+                "$ref": "#/components/schemas/CellConfigurationType"
               }
             }
           }
@@ -16010,36 +16013,6 @@
           }
         ]
       },
-      "LifeCycleEventID": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/TaxonomyElementString"
-          },
-          {
-            "type": "object",
-            "description": "An identifier for a lifecycle event",
-            "x-ob-item-type": "IdentifierTypeItemType",
-            "x-ob-item-type-group": "",
-            "x-ob-usage-tips": "",
-            "x-ob-sample-value": {}
-          }
-        ]
-      },
-      "LifeCycleEventDate": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/TaxonomyElementString"
-          },
-          {
-            "type": "object",
-            "description": "The datetime of a lifecycle event.",
-            "x-ob-item-type": "DateTimeItemType",
-            "x-ob-item-type-group": "",
-            "x-ob-usage-tips": "",
-            "x-ob-sample-value": {}
-          }
-        ]
-      },
       "LifeCycleEventType": {
         "allOf": [
           {
@@ -16886,6 +16859,21 @@
             "type": "object",
             "description": "Glazing thickness on the front of the module.",
             "x-ob-item-type": "LengthItemType",
+            "x-ob-item-type-group": "",
+            "x-ob-usage-tips": "",
+            "x-ob-sample-value": {}
+          }
+        ]
+      },
+      "CellConfigurationType": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TaxonomyElementString"
+          },
+          {
+            "type": "object",
+            "description": "The configuration type of the cell.",
+            "x-ob-item-type": "CellConfigurationTypeItemType",
             "x-ob-item-type-group": "",
             "x-ob-usage-tips": "",
             "x-ob-sample-value": {}
