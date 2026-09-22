@@ -6925,6 +6925,15 @@ components:
             - const: ClassIII
               title: Class III
               description: ''
+    TimeSeriesItemType:
+      type: object
+      properties:
+        StartTime:
+          type: string
+          format: date-time
+        EndTime:
+          type: string
+          format: date-time
     OBMonetary:
       allOf:
         - $ref: '#/components/schemas/MonetaryItemType'

@@ -1416,6 +1416,7 @@ components:
       allOf:
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/NumberItemType
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/SpeedItemType
+        - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/TimeSeriesItemType
     SnowPressure:
       description: The design pressure to be applied to a structure for snow loading
       allOf:
@@ -1775,6 +1776,7 @@ components:
       allOf:
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/NumberItemType
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/LengthItemType
+        - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/TimeSeriesItemType
     FilterIrradMin:
       description: Lower limit on irradiance.
       allOf:
@@ -1791,6 +1793,7 @@ components:
       allOf:
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/NumberItemType
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/DecimalPercentItemType
+        - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/TimeSeriesItemType
     ASTME2848ModelResidualMean:
       description: Mean value of the residuals of the regression model at ASTM E2848-11
         Eq. 1.
@@ -1868,6 +1871,7 @@ components:
       allOf:
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/NumberItemType
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/PressureItemType
+        - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/TimeSeriesItemType
     ASTME28484ModelCoeffA1:
       description: Coefficient a1 in Equation 1 of ASTM E2848-11, P = E(a1 + a2 x
         E + a3 x Ta + a4 x V) where P is power, E is in-plane irradiance, Ta is ambient
@@ -2171,6 +2175,7 @@ components:
       allOf:
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/NumberItemType
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/LengthItemType
+        - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/TimeSeriesItemType
     DeviceCost:
       description: Aggregate cost of the device from start of the installation to
         date.
@@ -2193,6 +2198,7 @@ components:
       allOf:
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/NumberItemType
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/PlaneAngleItemType
+        - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/TimeSeriesItemType
     PVStringID:
       description: A UUID for identifying a specific string
       allOf:
@@ -6422,6 +6428,7 @@ components:
       allOf:
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/NumberItemType
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/OBElectricalPower
+        - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/TimeSeriesItemType
     PowerArray:
       type: array
       items:
@@ -6443,6 +6450,7 @@ components:
       allOf:
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/NumberItemType
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/VoltageItemType
+        - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/TimeSeriesItemType
     VoltageArray:
       type: array
       items:
@@ -6471,11 +6479,13 @@ components:
       allOf:
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/NumberItemType
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/IrradianceItemType
+        - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/TimeSeriesItemType
     Temperature:
       description: Temperature measured at a specific location.
       allOf:
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/NumberItemType
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/TemperatureItemType
+        - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/TimeSeriesItemType
     IrradianceArray:
       type: array
       items:
@@ -6717,6 +6727,7 @@ components:
       allOf:
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/NumberItemType
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/OBElectricalEnergy
+        - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/TimeSeriesItemType
     EnergyArray:
       type: array
       items:
@@ -6728,6 +6739,7 @@ components:
       allOf:
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/NumberItemType
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/ElectricCurrentItemType
+        - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/TimeSeriesItemType
     CurrentArray:
       type: array
       items:
@@ -6740,6 +6752,7 @@ components:
       allOf:
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/NumberItemType
         - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/DecimalItemType
+        - $ref: Master-OB-OpenAPI-ItemTypes.yaml#/components/schemas/TimeSeriesItemType
     PowerFactorArray:
       type: array
       items:
