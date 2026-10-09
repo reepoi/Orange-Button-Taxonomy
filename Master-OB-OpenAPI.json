@@ -10650,8 +10650,8 @@
               "AHJCode": {
                 "$ref": "#/components/schemas/AHJCode"
               },
-              "EstimatedTurnaroundDays": {
-                "$ref": "#/components/schemas/EstimatedTurnaroundDays"
+              "EstimatedTurnaround": {
+                "$ref": "#/components/schemas/EstimatedTurnaround"
               },
               "AHJInspections": {
                 "$ref": "#/components/schemas/AHJInspections"
