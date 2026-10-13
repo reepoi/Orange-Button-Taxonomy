@@ -6346,23 +6346,6 @@
           }
         ]
       },
-      "JunctionBoxDiodeQuantity": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/TaxonomyElementNumber"
-          },
-          {
-            "type": "object",
-            "description": "The number of Junction Box Diodes in a solar module",
-            "x-ob-item-type": "PureItemType",
-            "x-ob-usage-tips": "",
-            "x-ob-sample-value": {
-              "Value": 3
-            },
-            "x-ob-item-type-group": ""
-          }
-        ]
-      },
       "JunctionBoxProtectionCertification": {
         "allOf": [
           {
@@ -6510,9 +6493,6 @@
               },
               "JunctionBoxProtectionCertification": {
                 "$ref": "#/components/schemas/JunctionBoxProtectionCertification"
-              },
-              "JunctionBoxDiodeQuantity": {
-                "$ref": "#/components/schemas/JunctionBoxDiodeQuantity"
               },
               "CableCrossSectionArea": {
                 "$ref": "#/components/schemas/CableCrossSectionArea"
