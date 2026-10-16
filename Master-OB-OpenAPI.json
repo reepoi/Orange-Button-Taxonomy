@@ -6192,7 +6192,7 @@
             "x-ob-item-type": "MassItemType",
             "x-ob-usage-tips": "",
             "x-ob-sample-value": {
-              "Unit": "lb",
+              "Unit": "g",
               "Value": 9.81
             },
             "x-ob-item-type-group": "MassUnitItemType"
@@ -11589,7 +11589,7 @@
             "x-ob-item-type-group": "",
             "x-ob-usage-tips": "",
             "x-ob-sample-value": {
-              "Value": "UUID"
+              "Unit": "UUID"
             }
           }
         ]
@@ -22193,7 +22193,7 @@
     },
     "IdentifierTypeItemType": {
       "description": "",
-      "enums": {
+      "units": {
         "UUID": {
           "label": "UUID",
           "description": ""
