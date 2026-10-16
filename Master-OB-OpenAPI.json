@@ -6258,24 +6258,6 @@
           }
         ]
       },
-      "Mass": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/TaxonomyElementNumber"
-          },
-          {
-            "type": "object",
-            "description": "The mass of the parent object. ",
-            "x-ob-item-type": "MassItemType",
-            "x-ob-usage-tips": "Apply appropriate engineering consistency with related object Weight.",
-            "x-ob-sample-value": {
-              "Unit": "kg",
-              "Value": 20
-            },
-            "x-ob-item-type-group": "MassUnitItemType"
-          }
-        ]
-      },
       "Width": {
         "allOf": [
           {
@@ -6426,12 +6408,12 @@
             "type": "object",
             "description": "The weight of the parent object",
             "x-ob-item-type": "MassItemType",
-            "x-ob-usage-tips": "Use appropriate engineering consistency with related object Mass",
+            "x-ob-usage-tips": "",
             "x-ob-sample-value": {
               "Unit": "lb",
               "Value": 9.81
             },
-            "x-ob-item-type-group": ""
+            "x-ob-item-type-group": "MassUnitItemType"
           }
         ]
       },
@@ -6650,9 +6632,6 @@
           },
           "Height": {
             "$ref": "#/components/schemas/Height"
-          },
-          "Mass": {
-            "$ref": "#/components/schemas/Mass"
           },
           "Weight": {
             "$ref": "#/components/schemas/Weight"
