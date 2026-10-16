@@ -3422,10 +3422,11 @@
             "type": "object",
             "description": "The length of the loan",
             "x-ob-item-type": "DurationItemType",
-            "x-ob-usage-tips": "",
+            "x-ob-usage-tips": "Can add time interval information about the loan (e.g., StartTime for when the loan term begins)",
             "x-ob-sample-value": {
               "Value": 30,
-              "Unit": "D"
+              "Unit": "D",
+              "StartTime": "2025-06-02T12:00:00-08:00"
             },
             "x-ob-item-type-group": ""
           }
