@@ -10386,6 +10386,9 @@
           "LossReport": {
             "$ref": "#/components/schemas/LossReport"
           },
+          "CapacityFactorAC": {
+            "$ref": "#/components/schemas/CapacityFactorAC"
+          },
           "OMIssues": {
             "$ref": "#/components/schemas/OMIssues"
           }
@@ -11001,8 +11004,8 @@
           "OperationalStatus": {
             "$ref": "#/components/schemas/OperationalStatus"
           },
-          "CapacityFactorAC": {
-            "$ref": "#/components/schemas/CapacityFactorAC"
+          "CapacityFractionAC": {
+            "$ref": "#/components/schemas/CapacityFractionAC"
           }
         }
       },
@@ -11013,8 +11016,8 @@
           "OperationalStatus": {
             "$ref": "#/components/schemas/OperationalStatus"
           },
-          "CapacityFactorAC": {
-            "$ref": "#/components/schemas/CapacityFactorAC"
+          "CapacityFractionAC": {
+            "$ref": "#/components/schemas/CapacityFractionAC"
           }
         }
       },
@@ -11052,6 +11055,21 @@
           }
         ]
       },
+      "CapacityFractionAC": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/TaxonomyElementNumber"
+          },
+          {
+            "type": "object",
+            "description": "The fraction of AC capacity affected",
+            "x-ob-item-type": "DecimalPercentItemType",
+            "x-ob-item-type-group": "",
+            "x-ob-usage-tips": "",
+            "x-ob-sample-value": {}
+          }
+        ]
+      },
       "CapacityFactorAC": {
         "allOf": [
           {
@@ -11059,9 +11077,9 @@
           },
           {
             "type": "object",
-            "description": "A fraction of nominal AC capacity",
-            "x-ob-item-type": "PowerItemType",
-            "x-ob-item-type-group": "OBElectricalPower",
+            "description": "Ratio of the actual power generated over a time interval divided by the AC capacity multiplied by the duration of the time interval",
+            "x-ob-item-type": "DecimalItemType",
+            "x-ob-item-type-group": "",
             "x-ob-usage-tips": "",
             "x-ob-sample-value": {}
           }
@@ -12043,8 +12061,8 @@
           "Description": {
             "$ref": "#/components/schemas/Description"
           },
-          "CapacityFactorAC": {
-            "$ref": "#/components/schemas/CapacityFactorAC"
+          "CapacityFractionAC": {
+            "$ref": "#/components/schemas/CapacityFractionAC"
           }
         }
       },
