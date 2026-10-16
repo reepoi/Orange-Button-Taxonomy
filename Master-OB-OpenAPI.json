@@ -14822,21 +14822,6 @@
           "$ref": "#/components/schemas/TemperatureTS"
         }
       },
-      "Frequency": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/TaxonomyElementNumber"
-          },
-          {
-            "type": "object",
-            "description": "Frequency (Hz) of a AC power device or system",
-            "x-ob-item-type": "FrequencyItemType",
-            "x-ob-item-type-group": "",
-            "x-ob-usage-tips": "",
-            "x-ob-sample-value": {}
-          }
-        ]
-      },
       "LineFrequency": {
         "allOf": [
           {
