@@ -10410,8 +10410,8 @@
             "x-ob-item-type-group": "OBElectricalEnergy",
             "x-ob-usage-tips": "",
             "x-ob-sample-value": {
-              "EndTime": "2020-01-05 17:00:00-05:00",
-              "StartTime": "2020-01-05 13:00:00-05:00",
+              "EndTime": "2020-01-05T17:00:00-05:00",
+              "StartTime": "2020-01-05T13:00:00-05:00",
               "Unit": "kWh",
               "Value": 150
             }
