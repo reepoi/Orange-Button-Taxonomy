@@ -6181,19 +6181,19 @@
           }
         ]
       },
-      "Weight": {
+      "Mass": {
         "allOf": [
           {
             "$ref": "#/components/schemas/TaxonomyElementNumber"
           },
           {
             "type": "object",
-            "description": "The weight of the parent object",
+            "description": "The mass of the parent object",
             "x-ob-item-type": "MassItemType",
             "x-ob-usage-tips": "",
             "x-ob-sample-value": {
-              "Unit": "g",
-              "Value": 9.81
+              "Unit": "kg",
+              "Value": 20
             },
             "x-ob-item-type-group": "MassUnitItemType"
           }
@@ -6415,8 +6415,8 @@
           "Height": {
             "$ref": "#/components/schemas/Height"
           },
-          "Weight": {
-            "$ref": "#/components/schemas/Weight"
+          "Mass": {
+            "$ref": "#/components/schemas/Mass"
           }
         }
       },
@@ -20491,8 +20491,8 @@
     "SpecificationTypeItemType": {
       "description": "An enumeration of specification types for a product.",
       "enums": {
-        "Weight": {
-          "label": "Weight",
+        "Mass": {
+          "label": "Mass",
           "description": ""
         },
         "Height": {
